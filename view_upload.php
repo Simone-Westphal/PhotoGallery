@@ -18,6 +18,25 @@
     <title>Upload ansehen</title>
 </head>
 <body>
+<?php
+$folder = "uploads";
+
+if(is_dir($folder)) {
+
+    $handler = opendir($folder);
+    $output = "";
+
+    while($files = readdir($handler)) {
+
+        // wenn kein directory
+        if(!is_dir($files)) {
+            $output.="<img src='uploads/{$files}' width='180' height='180'>";
+        }
+        
+    }
+}
+echo $output;
+?>
 <p><a href="index.php">Zurück</a></p>
 </body>
 </html>
